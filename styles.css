@@ -12,6 +12,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
 }
 
 h1 {
@@ -39,18 +40,16 @@ main {
     display: flex;
     gap: 70px;
     margin-bottom: 35px;
+    flex-wrap: wrap; /* Allows content to stack on smaller screens */
 }
 
-.hero-text {
-    flex: 2;
-}
-
+.hero-text,
 .hero-image {
     flex: 2;
 }
 
 .hero-image img {
-    width: 75%;
+    width: 100%; /* Adjusts image to be full-width in its container */
     border-radius: 10px;
 }
 
@@ -70,6 +69,7 @@ main {
     display: flex;
     gap: 10px;
     margin-top: 20px;
+    flex-wrap: wrap; /* Allows inputs to stack on smaller screens */
 }
 
 input[type="text"] {
@@ -78,6 +78,7 @@ input[type="text"] {
     border: none;
     border-radius: 5px;
     font-family: 'Space Grotesk', sans-serif;
+    width: 100%; /* Ensures full width on small screens */
 }
 
 .nutrition-facts {
@@ -130,4 +131,64 @@ input[type="text"] {
 
 .exercise-item i {
     font-size: 24px;
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 1024px) {
+    .nutrition-facts {
+        grid-template-columns: repeat(2, 1fr); /* Reduces columns to 2 */
+    }
+
+    .exercise-list {
+        grid-template-columns: repeat(1, 1fr); /* Single column layout */
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column; /* Stacks hero sections vertically */
+        gap: 30px; /* Reduces gap between stacked elements */
+    }
+
+    .hero-image img {
+        width: 100%; /* Ensure image fits container width */
+    }
+
+    .nutrition-facts {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .exercise-list {
+        grid-template-columns: 1fr; /* Single column layout */
+    }
+
+    .input-group {
+        flex-direction: column; /* Stacks input elements vertically */
+    }
+
+    button {
+        width: 100%; /* Full width button on mobile */
+        text-align: center; /* Centers text on button */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 10px;
+    }
+
+    main {
+        padding: 10px;
+    }
+
+    .nutrition-check,
+    .exercise-recommendations {
+        padding: 20px; /* Reduces padding on smaller screens */
+    }
+
+    .exercise-item {
+        flex-direction: column; /* Stacks content inside exercise item */
+        gap: 10px; /* Adds space between stacked items */
+    }
 }
